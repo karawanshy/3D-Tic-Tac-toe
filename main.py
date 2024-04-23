@@ -7,18 +7,28 @@ def main():
     name2 = input("Please enter the name of the second player: ")
 
     players = {'X':'', 'O':''}
+    scores = {'X':0, 'O':0}
+    game = Game()
     
+    # Pick first player
     players['X'] = random.choice([name1, name2])
     players['O'] = name1 if players['X'] == name2 else name2
 
-    print(f"\nPlayer X: {players['X']}      Player O: {players['O']}\n")
+    print("\n\n =============== Players =============== \n")
+    print(f"Player X: {players['X']}      Player O: {players['O']}\n")
 
     while True:
-        Game(players)
+        winner = game.play_game(players)
+        scores[winner] += 1
+
         choice = input("\nDo you want to play a new game? (Y/N) ").upper()
         if choice == 'N':
+            print("\n\n =============== Scores =============== \n")
+            print(f"{players['X']}: {scores['X']}      {players['O']}: {scores['O']}\n")
             break
-
+        elif choice != 'Y':
+            print("Invalid input!")
+            break
 
 if __name__=="__main__":
     main()
