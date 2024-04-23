@@ -19,7 +19,7 @@ def main():
 
     while True:
         winner = game.play_game(players)
-        scores[winner] += 1
+        scores[winner] = scores[winner] + 1 if winner else scores[winner]
 
         choice = input("\nDo you want to play a new game? (Y/N) ").upper()
         if choice == 'N':
