@@ -121,11 +121,9 @@ class Game:
 
             if self.victory_for(board):
                 print(f"\nCongratulations, {players[self.current_player]} Won!")
-                break
+                return self.current_player
             elif self.check_tie(board):
                 print("\nGame's Over, It's a tie!")
-                break
+                return None
 
             self.current_player = 'X' if self.current_player == 'O' else 'O'
-
-        return self.current_player
